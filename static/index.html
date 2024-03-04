@@ -41,8 +41,8 @@
                     <li class="nav-item dropdown">
                         <a id="expiry-dropdown-btn" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Expires: {{ui_expiry_default}}</a>
                         <div class="dropdown-menu" id="expiry-dropdown">
-                            {{#each ui_expiry_times as |value key|}}
-                            <a class="dropdown-item" href="{{value}}">{{key}}</a>
+                            {{#each ui_expiry_times}}
+                            <a class="dropdown-item" href="{{1}}">{{0}}</a>
                             {{/each}}
                         </div>
                     </li>
@@ -254,7 +254,7 @@
 
             {{#if is_editable}}
             <div class="form-group">
-                <textarea class="form-control" id="content-textarea" rows="25">{{pastebin_code}}</textarea>
+                <textarea autofocus class="form-control" id="content-textarea" rows="25">{{pastebin_code}}</textarea>
             </div>
             {{/if}}
             {{#if is_created or is_clone}}
@@ -294,6 +294,28 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modal-close-btn">Close</button>
                     <button type="button" class="btn btn-primary" id="decrypt-btn">Decrypt</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if is_created}}
+    <div class="modal fade hide" id="deletion-modal" tabindex="-1" role="dialog" aria-labelledby="deletion-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletion-modal-label">
+                        <i class="fas fa-trash"></i>
+                        Delete this paste?
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="deletion-modal-close-btn">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="deletion-confirm-btn">Delete</button>
                 </div>
             </div>
         </div>
